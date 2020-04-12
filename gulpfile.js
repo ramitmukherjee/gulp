@@ -1,22 +1,23 @@
-const gulp = require('gulp');
+// Straight from the user guide
+const { series, parallel } = require('gulp');
 
-// Private task coz not added to exports array
 function clean(cb) {
 
-    console.log("Cleaning...");
-    // call cb() to signal task finish
-    cb();
-
-}
-
-// Public task coz its added to the exports array
-function build(cb) {
-    console.log("Building...");
-    // call cb() to signal task finish
+    // Call this to signal task end
     cb();
 }
 
-// Public task
-exports.build = build;
-// First clean then build
-exports.default = gulp.series(clean, build);
+function css(cb) {
+    
+    // Call this to signal task end
+    cb();
+}
+
+function javascript(cb) {
+
+    // Call this to signal task end
+    cb();
+}
+
+// first run clean and then run css and javascript in parallel
+exports.build = series(clean, parallel(css, javascript));
