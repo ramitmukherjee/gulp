@@ -7,3 +7,6 @@ default task
 ## step_02
 public and private task
 series
+
+## step_03
+parallel
